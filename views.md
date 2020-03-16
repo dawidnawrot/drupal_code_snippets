@@ -1,0 +1,31 @@
+If you want to override your table values for a view it might be done with hook_views_pre_render hook and with hook_preprocess_views_view_field. Important thing to note that if your view has any fields "outside" of scope of an entitiy, for example Custom Global Text and you'd like to adjust it you should use hook_preprocess_views_view_field hook. That becasue these kind of fields are not accessible at hook_views_pre_render hook - the prerender hook relies only on entity fields. Example: if your view has 4 fields link entity_id, entity_title, entity_published and custom global text then the last field is not going to be accessible to alter in prerender hook. Another thing worth to mention is a case where you have two different custom blobal text fields and you'd like to preprocess just one. Both of these fields are going to use presented as "nothing" - i'd expect it'd be a "nothing" and "nothing_1", but no. Both are going to have the same, so how do we vary both same fields? Well, if you edit your view in Views UI and you click the field you want to edit you can provide an administraive label and instead of label you can just put a machine name like "my_nothing_field". And once you save it you can easily extend your condition by providing && check like so: `&& $variables['field']->options['admin_label'] == 'my_nothing_field'`. 
+
+In the example below I preprocess 'nothing' field in `prices` view. Becasue I've added a special administrative label I can check if that's the field I want to preprocess. At the end you should override `$variables['output']` array by some translatable string or a value.
+ 
+```php
+/**
+ * Implements hook_preprocess_views_view_field().
+*/
+function ck_fuel_ui_preprocess_views_view_field(&$variables) {
+  if ($variables['view']->id() == 'prices') {
+    if ($variables['field']->field == 'nothing' && $variables['field']->options['admin_label'] == 'price_change') {
+      $product_id = $variables['row']->_entity->get('field_price_product_reference')->getValue();
+      if ($product_id[0]['target_id']) {
+        $product_id = $product_id[0]['target_id'];
+
+        $query = \Drupal::entityTypeManager()->getStorage('price')->getQuery()
+          ->condition('field_price_date', $variables['row']->_entity->get('field_price_date')->value, '<')
+          ->condition('field_price_product_reference', $product_id, '=')
+          ->sort('field_price_date' , 'DESC')
+          ->range(0, 1);
+        $previous_price = $query->execute();
+
+        if (count($previous_price) > 0) {
+          $previous_price = \Drupal::entityTypeManager()->getStorage('price')->load(key($previous_price));
+          $variables['output'] = ((float) $variables['row']->_entity->get('price_gross')->value - (float) $previous_price->get('price_gross')->value);
+        }
+      }
+    }
+  }
+}
+```
