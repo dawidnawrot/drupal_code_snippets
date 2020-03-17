@@ -29,8 +29,12 @@ The point of this tip is to make just one entry published and unpublish automati
       foreach ($ids as $id) {
         $price = $this->entityManager()->getStorage('price')->load($id);
         $price->set('status', 0);
-        $price->save();
+        // This is required here, however if you make updates in hook_entity_update
+        // it might be ignored.
+        $price->save(); 
       }
     }
   }
   ```
+
+Additionally this can be also done with preSave method. Also related hooks can be used it's [hook_entity_presave](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Entity%21entity.api.php/function/hook_entity_presave/8.2.x) and [hook_entity_update](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Entity%21entity.api.php/function/hook_entity_update/8.2.x) - which corresponds to postSave method.
