@@ -33,7 +33,7 @@ function ck_fuel_ui_preprocess_views_view_field(&$variables) {
 }
 ```
 
-## Override view field with hook_views_pre_render(ViewExecutable $view)
+## Override value of the field (hook_views_pre_render(ViewExecutable $view) approach)
 
 In this case you can override some data that comes directly from an entity, other field values like `Custom Global Text` are not accessible at this point. In this example I change the value of a real number by subtracting its initial value by 4.
 ```php
