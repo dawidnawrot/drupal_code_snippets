@@ -9,5 +9,5 @@
  
 **Drupal console:**
 1. Go to lando ssh
-2. Go to dir where drupal install exists (whether it's a /web or dir up)
-3. Type php /app/sites/training/vendor/drupal/console/bin/drupal.php generate:module
+2. Go to dir where drupal install exists (whether it's a `/web` or dir up)
+3. Type `php /app/sites/training/vendor/drupal/console/bin/drupal.php generate:module`
