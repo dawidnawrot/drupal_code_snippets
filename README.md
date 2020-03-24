@@ -2,6 +2,7 @@
 
  - [Views](views.md)
  - [Entity](entity.md)
+ - [Batch](batch.md)
 
 # Other useful commands
 **PHPCS:**
