@@ -61,5 +61,40 @@ class SubscriberQueueController extends ControllerBase {
       }
     }
   }
+  
+  /**
+   * QueueFinished.
+   */
+  public static function queueFinished() {
+    \Drupal::logger('queue')->notice('finished');
+  }
+
+  /**
+   * Add to queue.
+   */
+  public static function addToQueue($subscribers) {
+    $queue_factory = \Drupal::service('queue');
+    $queue = $queue_factory->get('send_mail');
+    foreach ($subscribers as $subscriber) {
+      $item = new \stdClass();
+      $item->id = $subscriber->id();
+      $item->mail = $subscriber->getEmail();
+      $product_ids = $subscriber->get('field_subscription_fuel_types')->getValue();
+      foreach ($product_ids as $product_id) {
+        $product_ids_for_db[] = $product_id['target_id'];
+      }
+      $ids = Price::getPriceIdsByProducts($product_ids_for_db);
+      if (count($ids) > 0) {
+        foreach (Price::loadMultiple($ids) as $price_key => $price_value) {
+          $item->products[$price_key]['price_gross'] = $price_value->getPriceGross();
+          $item->products[$price_key]['date'] = $price_value->get('field_price_date')->value;
+          $product = Product::load($price_value->get('field_price_product_reference')->target_id);
+          $item->products[$price_key]['product_label'] = $product->getName();
+        }
+      }
+      $queue->createItem($item);
+    }
+  }
+  
 }
 ```
