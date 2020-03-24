@@ -1,0 +1,1 @@
+Check ck_fuel_ui_subscription module
