@@ -1,7 +1,24 @@
-## Loading entities
+## Loading entities and its fields
 
+Loading subscription entity procedular way:
 ```php
 $subscription = \Drupal::entityManager()->getStorage('subscription');
+// Load all entities.
+$entities = $subscription->loadMultiple();
+// Load specific (id = 5) entity.
+$single_entity = $subscription->load(5);
+// Load title field (check list of methods or investigate php entity definition file to see available methods).
+$title = $single_entity->getTitle();
+// Load field_date value.
+$date = $single_entity->get('field_date')->getValue();
+// Or.
+$date = $single_entity->get('field_date')->value;
+// Load entity_reference field value.
+// This will load just first value. If the field has cardinality set to > 1 then you need to
+// call getValue() method - see below.
+$reference = $single_entity->get('field_products_reference')->target_id; 
+// Getting multiple reference values
+$references = $single_entity->get('field_products_reference')->getValue(); 
 ```
 ## Updating entities programmatically
 
