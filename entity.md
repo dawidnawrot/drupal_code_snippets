@@ -1,3 +1,8 @@
+## Loading entities
+
+```php
+$subscription = \Drupal::entityManager()->getStorage('subscription');
+```
 ## Updating entities programmatically
 
 The point of this tip is to make just one entry published and unpublish automatically rest of entries. Let's say you have your price entity provided in prices/src/Entity/Price.php file (this might be applied to nodes too, but let's stick with price) and the class is the extension of ContentEntityBase class. So this entity has its published/status field. The method we're gonna use is postSave. Within this method during the save process we will check if the entity has status set to 1 and if it has we will unpublish all the rest of entities with status flag set to 1. This is the code we're gonna use:
