@@ -3,6 +3,7 @@
  - [Views](views.md)
  - [Entity](entity.md)
  - [Batch](batch.md)
+ - [Logger](logger.md)
 
 # Other useful commands
 **PHPCS:**
