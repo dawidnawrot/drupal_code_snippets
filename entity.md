@@ -60,3 +60,18 @@ The point of this tip is to make just one entry published and unpublish automati
   ```
 
 Additionally this can be also done with preSave method. Also related hooks can be used it's [hook_entity_presave](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Entity%21entity.api.php/function/hook_entity_presave/8.2.x) and [hook_entity_update](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Entity%21entity.api.php/function/hook_entity_update/8.2.x) - which corresponds to postSave method.
+
+## Updating entity anywhere
+
+Simple example of updaing entity:
+
+```php
+// Load entity.
+$subscriber = $this->entityTypeManager->getStorage('subscription')->load(5);
+// Set new value for the specific field added by UI, fields added in code
+// has their own methods to update.
+// $update_product_ids is an array of same keys and values, like so
+// [0 => '0', 1 => '1'] etc.
+$subscriber->set('field_subscription_fuel_types', $update_product_ids);
+$subscriber->save();
+```
