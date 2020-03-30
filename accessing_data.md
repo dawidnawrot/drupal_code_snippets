@@ -11,5 +11,4 @@ If you dump some variable by ksm(), it's data is going to be divided into three 
  ```
  
  Here is the example:
- 
-<img src="https://i.imgur.com/hP5F6zo.jpg" alt="accessing data />
+ <img src="https://i.imgur.com/hP5F6zo.jpg" alt="accessing data" />
