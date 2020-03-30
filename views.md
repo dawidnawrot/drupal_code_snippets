@@ -47,3 +47,26 @@ function hook_views_pre_render(ViewExecutable $view) {
   }
 }
 ```
+
+## Pass extra settings into a view
+If your view depends on certian settings that needs to be used let's say in one of preprocess functions, but you'd like to pass it way before eg. right after loading view you can put these extra settings into $view->style_plugin->options array.
+
+For example:
+```php
+// Load a view
+$viw = Views::getView($view_machine_name);
+$view->style_plugin->options['your_extra_settings'] = $extra_settings;
+$variables['view'] = $view->render($view_display);
+```
+
+Later on in the preprocess function you can use it as follow:
+```php
+/**
+ * Implements template_preprocess_views_view_table().
+ */
+function theme_preprocess_views_view_table(&$variables) {
+  if ($variables['view']->id() == 'your_view') {
+    $extra_settings = $variables['view']->style_plugin->options['your_extra_settings'];
+  }
+}
+```
