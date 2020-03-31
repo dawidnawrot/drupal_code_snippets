@@ -5,6 +5,7 @@
  - [Batch](batch.md)
  - [Logger](logger.md)
  - [Accessing data](accessing_data.md)
+ - [Migrate](migrate.md)
 
 # Other useful commands
 **PHPCS:**
