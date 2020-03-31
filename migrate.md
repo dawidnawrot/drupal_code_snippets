@@ -1,5 +1,6 @@
 ## References worth invesigating
  - [Migrating CSV file into Drupal](https://agaric.coop/blog/migrating-csv-files-drupal)
+ - [Process custom plugin](https://kevinquillen.com/creating-custom-process-plugin-drupal-8-migrate) well explained process custom plugin - method that is triggered by default is transform().
 
 ## Example of CSV migration with entity reference field using migrate_lookup process
 
