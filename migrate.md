@@ -45,7 +45,6 @@ It has just one product provided for simplicity of the example.
 **Price migration**
 Yml file:
 ```
-# Import menu links to default pages, like About us.
 id: ck_fuel_prices_dk
 migration_group: ck_fuel_ui
 label: 'Create fuel prices for DK'
@@ -82,6 +81,54 @@ id,price_gross,price_net,product,date,currency
 ```
 
 As you can see there's a `field_price_product_reference` field defined. This is the part where the magic happens. So the plugin is migration_lookup and there's an id of the dependent migration which is set to be `ck_fuel_products_dk`. As for the source we just need to put the name of the column from price csv file that reflects an id of the product which is the `product` column. That's all you have to do, no more, no less. It works like charm.
+
+### Working with multiple products
+
+So in the example above there was just one to one relation. If we want to have one to many relation we need to make some changes. So our csv file needs to be adjusted like so:
+```
+id,price_gross,price_net,product,date,currency
+1,9.67,8.65,98;95,92,2020-03-31,pln
+2,10.20,9.50,98;95,2020-03-30,pln
+3,1,2.50,98,2020-03-29,pln
+```
+
+As you can see first price is assiged to three products 98, 95 and 92, second one to two 98, 95 and third one just one 98.
+Our yml file needs to be adjusted to like so:
+
+```
+id: ck_fuel_prices_dk
+migration_group: ck_fuel_ui
+label: 'Create fuel prices for DK'
+source:
+  plugin: csv
+  path: /data/fuel_prices_dk.csv
+  ids: [id]
+destination:
+  plugin: entity:price
+process:
+  bundle:
+    plugin: default_value
+    default_value: price
+  price_gross: price_gross
+  field_price_price_net: price_net
+  field_price_product_reference:
+    -
+      source: product
+      plugin: explode
+      delimiter: ';'
+    -
+      plugin: migration_lookup
+      migration: ck_fuel_products_dk
+      no_stub: true
+  field_price_date: date
+  field_price_currency: currency
+migration_dependencies:
+  required:
+    - ck_fuel_products_dk
+```
+
+Of course product data needs to have 95 and 92 products, so it can match.
+
 
 ## Migrate in Drupal 8 - pitfalls and how to debug, test
 
