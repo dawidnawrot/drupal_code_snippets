@@ -1,3 +1,6 @@
+## References worth invesigating
+ - [Migrating CSV file into Drupal](https://agaric.coop/blog/migrating-csv-files-drupal)
+
 ## Example of CSV migration with entity reference field using migrate_lookup process
 
 Here is the schema of dependent migrations. Although it might looks complex at first sight it really isn't. I just used my own files, so it has more fields then example actually needs. The most important one is the `id` of product in `ck_fuel_products_dk` migration and `product` in `ck_fuel_prices_dk` migration:
