@@ -18,3 +18,12 @@
 
 **Running just appserver_nginx_1**
  - `lando start -s appserver_nginx_1`
+
+**Running up Netis card**
+Try: `sudo modprobe 8812au`. If that doesn't work try:
+```
+cd ~/Desktop/RTL8812AU_linux_v4.3.20_16317_20160108/rtl8812au
+make
+sudo make install
+sudo modprobe 8812au
+```
