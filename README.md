@@ -23,8 +23,9 @@
 
 Try: `sudo modprobe 8812au`. If that doesn't work try:
 ```
-cd ~/Desktop/RTL8812AU_linux_v4.3.20_16317_20160108/rtl8812au
+cd ~/Downloads/netis_wifi_card_driver/RTL8812AU_linux_v4.3.20_16317_20160108/rtl8812au
 make
 sudo make install
 sudo modprobe 8812au
 ```
+I've noticed that card stops working after running Windows. If the above will not work, go a dir up to `RTL8812AU_linux_v4.3.20_16317_20160108` and try `sudo ./install.sh`, after that try again above commands.
