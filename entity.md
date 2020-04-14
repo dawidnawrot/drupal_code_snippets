@@ -1,4 +1,10 @@
 # Loading entities
+## Loading entity from url
+```php
+if ($node = \Drupal::request()->attributes->get('node')) {
+  ksm($node); // Prints out array of node object.
+}
+```
 ## Loading subscription entity procedular way:
 
 ```php
