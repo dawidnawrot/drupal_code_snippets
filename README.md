@@ -1,11 +1,12 @@
 # Drupal code snippets
 
- - [Views](views.md)
- - [Entity](entity.md)
- - [Batch](batch.md)
- - [Logger](logger.md)
  - [Accessing data](accessing_data.md)
+ - [Batch](batch.md)
+ - [Entity](entity.md)
+ - [Logger](logger.md)
  - [Migrate](migrate.md)
+ - [User](user.md)
+ - [Views](views.md)
 
 # Other useful commands
 **PHPCS:**
