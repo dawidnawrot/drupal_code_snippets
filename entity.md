@@ -24,7 +24,18 @@ $date = $single_entity->get('field_date')->value;
 // call getValue() method - see below.
 $reference = $single_entity->get('field_products_reference')->target_id; 
 // Getting multiple reference values
-$references = $single_entity->get('field_products_reference')->getValue(); 
+$references = $single_entity->get('field_products_reference')->getValue();
+```
+
+## Loading entity by getQuery method:
+We can load enities using getQuery method. It's quite simple and effective. Although it's not as powerfull as direct query yet it's still pretty handy. Especially part with loading referenced entities - it's very straightforward. Here is the example:
+
+```php
+$query = $this->entityManager()->getStorage('price')->getQuery();
+$query->condition('status', 1, '=');
+// Here is the handy part. We know that price entity is connected to product by field_price_product_reference reference field. Therefore we can get any value from product knowing only the ID of the referenced product. So, `field_price_product_reference` representing an ID of a product in price entity. Then we add `.entity` - we always do it this way, that's what the syntax is. Then we add `:` and then machine name of an entity, in out case it's `product` and after that we call any field we want from product entity in this case `field_product_category`.
+$query->condition('field_price_product_reference.entity:product.field_product_category', $final_categories, 'IN');
+$ids = $query->execute();
 ```
 # Updating entities
 ## Updating entities programmatically
