@@ -33,7 +33,13 @@ We can load enities using getQuery method. It's quite simple and effective. Alth
 ```php
 $query = $this->entityManager()->getStorage('price')->getQuery();
 $query->condition('status', 1, '=');
-// Here is the handy part. We know that price entity is connected to product by field_price_product_reference reference field. Therefore we can get any value from product knowing only the ID of the referenced product. So, `field_price_product_reference` representing an ID of a product in price entity. Then we add `.entity` - we always do it this way, that's what the syntax is. Then we add `:` and then machine name of an entity, in out case it's `product` and after that we call any field we want from product entity in this case `field_product_category`.
+// Here is the handy part. We know that price entity is connected to product by 
+// field_price_product_reference reference field. Therefore we can get any value
+// from product knowing only the ID of the referenced product. 
+// So, `field_price_product_reference` representing an ID of a product in price entity.
+// Then we add `.entity` - we always do it this way, that's what the syntax is. Then we
+// add `:` and then machine name of an entity, in out case it's `product` and after that
+// we call any field we want from product entity in this case `field_product_category`.
 $query->condition('field_price_product_reference.entity:product.field_product_category', $final_categories, 'IN');
 $ids = $query->execute();
 ```
