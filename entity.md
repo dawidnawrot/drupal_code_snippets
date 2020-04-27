@@ -27,7 +27,7 @@ $reference = $single_entity->get('field_products_reference')->target_id;
 $references = $single_entity->get('field_products_reference')->getValue();
 ```
 
-## Loading entity by getQuery method:
+## Loading entity by getQuery method and getting values from referenced entity:
 We can load enities using getQuery method. It's quite simple and effective. Although it's not as powerfull as direct query yet it's still pretty handy. Especially part with loading referenced entities - it's very straightforward. Here is the example:
 
 ```php
