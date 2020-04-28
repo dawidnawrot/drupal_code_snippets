@@ -22,7 +22,7 @@
 2. Go to site root (whther it's a `/web` or dir up)
 3. Type `php vendor/mglaman/drupal-check/drupal-check --drupal-root=/app/sites/training/web/ web/profiles/custom/ck/modules/custom/ck_access/`
 
-References: [https://github.com/mglaman/drupal-check]
+References: https://github.com/mglaman/drupal-check
 
 **Running just appserver_nginx_1**
  - `lando start -s appserver_nginx_1`
