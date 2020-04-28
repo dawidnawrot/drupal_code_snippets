@@ -17,6 +17,11 @@
 2. Go to dir where drupal install exists (whether it's a `/web` or dir up)
 3. Type `php /app/sites/training/vendor/drupal/console/bin/drupal.php generate:module`
 
+**Drupal check**
+1. Go to lando ssh
+2. Go to site root (whther it's a `/web` or dir up)
+3. Type `php vendor/mglaman/drupal-check/drupal-check --drupal-root=/app/sites/training/web/ web/profiles/custom/ck/modules/custom/ck_access/`
+
 **Running just appserver_nginx_1**
  - `lando start -s appserver_nginx_1`
 
