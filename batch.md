@@ -7,7 +7,9 @@ There are two functions which you need to know in order to use it. First is a ba
 
 <img src="https://i.imgur.com/xIo1hNG.png" alt="batch" />
 
-So let's assume you have a route and controller with `build` method which is fired once the route is triggered. Let's start very simple:
+So let's assume you have a route and controller with `build` method which is fired once the route is triggered. Let's start very simple.
+
+So build method defines a $batch array. This array is going to be used to feed batch_set($batch) function. The structure of an array consist of title, operations (described separately below), init_message, progress_message, error_message, finished. So all the keys except operations and finished are pretty simple, as you just describe what message is going to be displayed during batch process. As for finished, you define a method / function here, so it's going to be triggered when batch_process ends. There's also an operations key and this is where you store your data and the process function. Once the batch_set function is triggered you can run batch_process function, so it will process all your data. In this case our batch push data to drupal queue, but since we don't really need to create one queue row per one entity entry (although we could, nothing wrong with that) we chunk this array into some collections. Later on when the queue is triggered by cron it will process queue entries one by one (collection by collection). You can read explanations about queue and how to use it here.
 ```php
 <?php
 
