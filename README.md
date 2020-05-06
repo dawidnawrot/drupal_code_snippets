@@ -5,6 +5,7 @@
  - [Entity](entity.md)
  - [Logger](logger.md)
  - [Migrate](migrate.md)
+ - [Theming](theming.md)
  - [User](user.md)
  - [Views](views.md)
 
