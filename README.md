@@ -54,4 +54,5 @@ I've noticed that card stops working after running Windows. If the above will no
 4. Finish new release - add tag description, so it's there eg.: Release 0.3.0
 5. This should merge release both to develop and master and create a tag ck.0.3.0 and put you on develop
 6. git push --tag (optionally if it's reejected just pull tags with git pull --tag) and then push
+7. git push origin develop
 7. Checkout to master and push changes to master (as it was merged from develop to master).
