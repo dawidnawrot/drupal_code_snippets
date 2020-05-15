@@ -46,3 +46,12 @@ I've noticed that card stops working after running Windows. If the above will no
 **VSC**
 
 [Huge git files track](https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc)
+
+**Release**
+1. Checkout to develop and pull
+2. Checkout to master and pull
+3. Checkout to develop and start new release (you don't have to provide any prefix just `0.3.0` is fine)
+4. Finish new release - add tag description, so it's there eg.: Release 0.3.0
+5. This should merge release both to develop and master and create a tag ck.0.3.0 and put you on develop
+6. git push --tag (optionally if it's reejected just pull tags with git pull --tag) and then push
+7. Checkout to master and push changes to master (as it was merged from develop to master).
