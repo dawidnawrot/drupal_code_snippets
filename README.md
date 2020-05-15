@@ -25,6 +25,10 @@
 
 References: https://github.com/mglaman/drupal-check
 
+**Screenshot**
+ - `flameshot gui -d 3000`
+More info here: https://github.com/lupoDharkael/flameshot
+
 **Running just appserver_nginx_1**
  - `lando start -s appserver_nginx_1`
 
