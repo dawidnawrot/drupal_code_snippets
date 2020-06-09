@@ -63,5 +63,4 @@ class ChatbotController extends ControllerBase {
 }
 ```
 
-
-
+So the important things starts from `$output = \Drupal::service('renderer')->renderRoot($build);` line. We just prepare an output out of custom ck_chatbot theme. This renderer service with its renderRoot method will provide an html for you. As for ck_chatbot theme, well it has all of the html code we want to return including `<html>` tag. Then we just instanciate new response and set content to the response and return it. That's it folks.
