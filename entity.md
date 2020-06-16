@@ -8,7 +8,7 @@ if ($node = \Drupal::request()->attributes->get('node')) {
 ## Loading subscription entity procedular way:
 
 ```php
-$subscription = \Drupal::entityManager()->getStorage('subscription');
+$subscription = \Drupal::entityTypeManager()->getStorage('subscription');
 // Load all entities.
 $entities = $subscription->loadMultiple();
 // Load specific (id = 5) entity.
