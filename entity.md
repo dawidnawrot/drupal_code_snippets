@@ -31,7 +31,7 @@ $references = $single_entity->get('field_products_reference')->getValue();
 We can load enities using getQuery method. It's quite simple and effective. Although it's not as powerfull as direct query yet it's still pretty handy. Especially part with loading referenced entities - it's very straightforward. Here is the example:
 
 ```php
-$query = $this->entityManager()->getStorage('price')->getQuery();
+$query = $this->entityTypeManager()->getStorage('price')->getQuery();
 $query->condition('status', 1, '=');
 // Here is the handy part. We know that price entity is connected to product by 
 // field_price_product_reference reference field. Therefore we can get any value
@@ -59,7 +59,7 @@ The point of this tip is to make just one entry published and unpublish automati
     // $this->get('your_field')->value or entity reference field like so
     // $this->get('field_price_product_reference')->target_id.
     // Get all published prices.
-    $query = $this->entityManager()->getStorage('price')->getQuery()
+    $query = $this->entityTypeManager()->getStorage('price')->getQuery()
       ->condition('status', 1, '=')
     $ids = $query->execute();
 
@@ -73,7 +73,7 @@ The point of this tip is to make just one entry published and unpublish automati
     // certain product (field_price_product_reference).
     if ($this->getStatus()) {
       foreach ($ids as $id) {
-        $price = $this->entityManager()->getStorage('price')->load($id);
+        $price = $this->entityTypeManager()->getStorage('price')->load($id);
         $price->set('status', 0);
         // This is required here, however if you make updates in hook_entity_update
         // it might be ignored.
