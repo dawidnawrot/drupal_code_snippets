@@ -2,6 +2,7 @@
 
  - [Accessing data](accessing_data.md)
  - [Batch](batch.md)
+ - [Custom hooks](custom_hooks.md)
  - [Entity](entity.md)
  - [Libraries](libraries.md)
  - [Logger](logger.md)
