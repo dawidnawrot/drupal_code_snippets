@@ -47,4 +47,6 @@ I've noticed that card stops working after running Windows. If the above will no
 7. Checkout to master and push changes to master (as it was merged from develop to master).
 
 **Keyboard**
-```xmodmap ~/.Xmodmap```
+```
+xmodmap ~/.Xmodmap
+```
