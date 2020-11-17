@@ -23,14 +23,26 @@ More info here: https://github.com/lupoDharkael/flameshot
 
 **Running up Netis card**
 
-Try: `sudo modprobe 8812au`. If that doesn't work try:
+With each kernet update (currently running on 5.4.0-53-generic version, type: `uname -r` in terminal to get to know which version is installed) the driver might not work and it needs to be updated. Now the driver is installed as part of kernel using dkms. You can check the drivers loaded into kernet by typing: `sudo dkms status`. The output for the time being is: 
+
 ```
-cd ~/Downloads/netis_wifi_card_driver/RTL8812AU_linux_v4.3.20_16317_20160108/rtl8812au
-make
-sudo make install
-sudo modprobe 8812au
+8812au, 5.6.4.2_35491.20191025, 5.4.0-53-generic, x86_64: installed
+nvidia, 450.66, 5.4.0-52-generic, x86_64: installed
+nvidia, 450.66, 5.4.0-53-generic, x86_64: installed
 ```
-I've noticed that card stops working after running Windows. If the above will not work, go a dir up to `RTL8812AU_linux_v4.3.20_16317_20160108` and try `sudo ./install.sh`, after that try again above commands.
+
+Previously I had a warning there is some difference in 8812au row, so I had to uninstall it by typing:
+```
+sudo dkms remove 8812au/5.6.4.2_35491.20191025 -k 5.4.0-53-generic
+```
+
+So, after uninstalling it `sudo dkms status` showed only nvidia. The I cloned this repo: https://github.com/aircrack-ng/rtl8812au (it's downloaded into `~/Downloads/new_netis_driver/rtl8812au`) and followed the instructions in readme file:
+```
+sudo apt-get install dkms
+sudo make dkms_install
+```
+
+And after reboot it started to working, however I tried many different solutions in order to make it work. 
 
 **VSC**
 
