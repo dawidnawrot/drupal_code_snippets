@@ -19,7 +19,7 @@ Without APCU extension enabled or installed.
 
 Let's digg a bit and find the details, so we have some idea what's happning here. 
 
-In most answers you will find out that cleaning drupal cache or providing extra `class_loader_auto_detect` setting to FALSE will work for you. Sometimes it works, sometimes not. If you put your `class_loader_auto_detect` setting to FALSE you will loose class caching mechanism. If it is an option and it's ready to use why would you? There's no point to do it. Instead let's use it. So, let's assume that you do have `APCU` extension enabled. While drupal 8 is booting DrupalKernel.php boot method will use APCU by default unless it's disabled in you settings.php (`class_loader_auto_detect` settings) which can be found here:
+In most answers you will find out that cleaning drupal cache or providing extra `class_loader_auto_detect` setting to FALSE will work for you. Sometimes it works, sometimes not. If you put your `class_loader_auto_detect` setting to FALSE it'll work but you will loose class caching mechanism. Is it really a good idea? Well, no. If it is an option and it's ready to use why would you? There's no point to do it. Instead let's use it. So, let's assume that you do have `APCU` extension enabled. While drupal 8 is booting DrupalKernel.php boot method will use APCU by default unless it's disabled in you settings.php (`class_loader_auto_detect` settings) which can be found here:
 
 https://github.com/drupal/drupal/blob/9.2.x/core/lib/Drupal/Core/DrupalKernel.php#L476
 
