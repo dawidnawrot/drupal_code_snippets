@@ -62,3 +62,32 @@ And after reboot it started to working, however I tried many different solutions
 ```
 xmodmap ~/.Xmodmap
 ```
+
+**VScode setup - xdebug and symlinks 2021**
+xdebug - for single site SE xdebug setup put a ./.vscode/launch.json file in main dir. This is the setup for xdebug > 3.0
+
+```
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Listen for XDebug",
+      "type": "php",
+      "request": "launch",
+      "port": 9003,
+      "pathMappings": {
+        "/app/profiles/ck": "/home/dawid/Documents/circlek/profiles/ck",
+        "/app/sites/se/web": "/home/dawid/Documents/circlek/sites/se/web",
+      },
+      "xdebugSettings": {
+        "show_hidden": 1
+      }
+    }
+  ]
+}
+```
+
+If you want to track different site just put another debug config file in different site.
+
+Symlinks:
+As for working symlinks in vscode the symlink needs to be done in parent os. It cannot be created in any dockerized system as it's going to be seen as single file. One the other hand it still should be treated as dockerized system as a symlink. This way it's easy to setup a symlinked local environment.
