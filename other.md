@@ -93,6 +93,7 @@ Symlinks:
 As for working symlinks in vscode the symlink needs to be done in parent os. It cannot be created in any dockerized system as it's going to be seen as single file. One the other hand it still should be treated as dockerized system as a symlink. This way it's easy to setup a symlinked local environment.
 
 **AWS**
+
 `avs-vault login cksites-test` - loguje w przegladarce (i tam uslugi S3 i CloudWatch ECS) - backupy sa na S3 w kat. cksites-prod-backups
 
 `aws-vault exec cksites-test` - loguje w konsoli do AWS wybierajac region EU-WEST-1. 
