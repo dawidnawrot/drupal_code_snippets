@@ -98,3 +98,6 @@ As for working symlinks in vscode the symlink needs to be done in parent os. It 
 
 `aws-vault exec cksites-test` - loguje w konsoli do AWS wybierajac region EU-WEST-1. 
 Nastepnie `aws s3 ls` listuje to co na s3, przykladowo `aws s3 cp s3://cksites-prod-backups/cksitesdk.gz ./` sciaga baze.
+
+**Pulseaudio equalizer - start**
+`qpaeq`
