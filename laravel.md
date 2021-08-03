@@ -1,6 +1,6 @@
 **How to get mysql host to connect to?**
 
-First if the container is started let's list it: `docker ps`. Then get the id of the container, and then just put:
+First if the container is started let's list it: `docker ps`. Then get the id of the mysql container, and then just put:
 
 `docker inspect <container-id> | grep Gateway`
 
