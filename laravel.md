@@ -1,16 +1,10 @@
 `./vendor/bin/sail artisan make:migration create_flights_table` - create migration
-
-`./vendor/bin/sail artisan artisan migrate` - run all migrations
-
-`./vendor/bin/sail artisan artisan migrate:status` - check migrations status
-
-`./vendor/bin/sail artisan artisan migrate:rollback` - rollbacks last migration (not nessecarily all)
-
-`./vendor/bin/sail artisan artisan migrate:reset` - rollbacks all migrations
-
-`./vendor/bin/sail artisan artisan migrate:refresh` - rollbacks and import all migrations
-
-`./vendor/bin/sail artisan artisan migrate:refresh --seed` - rollbacks and import all migrations and migrate data
+`./vendor/bin/sail artisan migrate` - run all migrations
+`./vendor/bin/sail artisan migrate:status` - check migrations status
+`./vendor/bin/sail artisan migrate:rollback` - rollbacks last migration (not nessecarily all)
+`./vendor/bin/sail artisan migrate:reset` - rollbacks all migrations
+`./vendor/bin/sail artisan migrate:refresh` - rollbacks and import all migrations
+`./vendor/bin/sail artisan migrate:refresh --seed` - rollbacks and import all migrations and migrate data
 
 **How to get mysql host to connect to?**
 
