@@ -6,6 +6,11 @@
 `./vendor/bin/sail artisan migrate:refresh` - rollbacks and import all migrations<br>
 `./vendor/bin/sail artisan migrate:refresh --seed` - rollbacks and import all migrations and migrate data<br>
 
+Tinker:
+
+`./vendor/bin/sail artisan tinker`<br>
+`\App\Models\User::create(['name' => 'dawid', 'email' => 'dnawrot@poczta.fm', 'password' => bcrypt('password'), 'phone' => '667665443']);`
+
 **How to get mysql host to connect to?**
 
 First if the container is started let's list it: `docker ps`. Then get the id of the mysql container, and then just put:
