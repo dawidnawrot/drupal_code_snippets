@@ -101,3 +101,9 @@ Nastepnie `aws s3 ls` listuje to co na s3, przykladowo `aws s3 cp s3://cksites-p
 
 **Pulseaudio equalizer - start**
 `qpaeq`
+
+**Local symlink instead of container symlink**
+```
+dawid@dawid-Latitude-7490:~/Documents/circlek/sites/pl/web/profiles/custom (develop)$ rm ck
+dawid@dawid-Latitude-7490:~/Documents/circlek/sites/pl/web/profiles/custom (develop)$ ln -s ../../../../../profiles/ck/ ./ck
+```
