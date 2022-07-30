@@ -114,3 +114,9 @@ dawid@dawid-Latitude-7490:~/Documents/circlek/sites/pl/web/profiles/custom (deve
 2. Jesli Teams nie widzi JBL to nalezy go wylaczyc calkowicie. Nastepnie pojsc do ustawien dzwieku w ubuntu i zobaczyc czy jest JBL pokazany (output i input). Jesli tak to wlaczamy jeszcze raz Teams i teraz to urzadzenie powinno moc byc wybrane. Jesli natomiast nie ma JBL to trzeba sprawdzic czy jest podlaczone do bluetooth.
 3. JBL: niebieska migajaca dioda - urzadzenie jest niepodlaczone i nasluchuje na polaczenie. niebieska dioda swieci swiatlem ciaglym - urzadzenie jest podlaczone.
 4. Polecenie dmesg - jesli wyswietla blad `File 'le_min_key_size' in directory 'hci0' already present!` to jeszcze o niczym nie swiadczy, nadal mozna sie polaczyc z JBL, kwestia, zeby wczesniej zainstalowac `sudo apt-get install pulseaudio-module-bluetooth` i dalej `killall pulseaudio`
+
+**PulseEffects**
+It finally works, all the presets are listed here:
+https://github.com/wwmm/easyeffects/wiki/PulseEffects-Wiki#community-presets
+
+Make sure these are for PulseEffects and not for EasyEffects which is newer version of PulseEffects.
