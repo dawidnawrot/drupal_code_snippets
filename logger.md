@@ -6,5 +6,5 @@
 \Drupal::logger('my_module')->warning('message');
 \Drupal::logger('my_module')->warning('error');
 // Log array data:
-\Drupal::logger('debugging')->warning(print_r($_GET, TRUE));
+\Drupal::logger('debugging')->warning('<pre><code>' . print_r($_GET, TRUE) . '</code></pre>');
 ```
