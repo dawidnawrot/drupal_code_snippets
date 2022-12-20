@@ -1,3 +1,14 @@
+## Add extra variables to already defined theme by hook_theme
+
+```
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function hook_theme_registry_alter(&$theme_registry) {
+  $theme_registry['menu']['variables']['mobile'] = NULL;
+}
+```
+
 ## Theme table
 
 ```php
